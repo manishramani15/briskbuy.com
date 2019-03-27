@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>briskbuy</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron header">
+            <div class="row">
+                <div class="col-sm-2 mainHeading"><h2>briskbuy.com</h2></div>
+                <div class="col-sm-7 searchContainer">
+                    <form>
+                        <div class="input-group row" id="searchInputGroup">
+                            <span class="input-group-addon col-sm-2 dropdown" id="filters">
+                                <select class="form-control" id="sel1" name="filters">
+                                    <option value="all">All</option>
+                                    <option value="male">male</option>
+                                    <option value="female">female</option>
+                                </select>
+                            </span>
+                            <input type="text" id="searchInput" class="form-control col-sm-5" name="search" placeholder="search">
+                            <button id="search" class="col-sm-2">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-3 credentialContainer">
+                    <!-- login button and modal -->
+                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+                    <div id="id01" class="modal">
+                        <form class="modal-content animate" action="/action_page.php">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                            </div>
+                            <div class="container">
+                                <label for="uname"><b>Username</b></label>
+                                <input type="text" placeholder="Enter Username" name="uname" required>
+                                
+                                <label for="psw"><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password" name="psw" required>
+                                
+                                <button type="submit">Login</button>
+                                <label>
+                                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                                </label>
+                            </div>
+                            <div class="container" style="background-color:#f1f1f1">
+                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                <span class="psw">Forgot <a href="#">password?</a></span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- // -->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
