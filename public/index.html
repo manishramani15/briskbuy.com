@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>briskbuy</title>
+    <link rel="icon" href="bb.png" type="image/gif" sizes="16x16"> 
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="styles.css">
     <script src="jquery-3.3.1.js"></script>
@@ -31,37 +32,57 @@
                     </form>
                 </div>
                 <div class="col-sm-3 credentialContainer">
-                    <!-- login button and modal -->
+                    <div id="welcomeDiv"></div>
                     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-                    <div id="id01" class="modal">
-                        <form class="modal-content animate" action="/action_page.php">
-                            <div class="imgcontainer">
-                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                <img src="img_avatar2.png" alt="Avatar" class="avatar">
-                            </div>
-                            <div class="container">
-                                <label for="uname"><b>Username</b></label>
-                                <input type="text" placeholder="Enter Username" name="uname" required>
-                                
-                                <label for="psw"><b>Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" required>
-                                
-                                <button type="submit">Login</button>
-                                <label>
-                                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                                </label>
-                            </div>
-                            <div class="container" style="background-color:#f1f1f1">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                <span class="psw">Forgot <a href="#">password?</a></span>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- // -->
+                    <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
                 </div>
             </div>
         </div>
         
     </div>
+    <div id="id01" class="modal modal-content animate">
+        <div class="imgcontainer">
+            <span class="close" title="Close Modal">&times;</span>
+            <img src="avatar.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" id="loginUsername" required>
+            
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="loginPassword" required>
+            
+            <button type="button" id="loginButton">Login</button>
+            <button type="button" class="btn-secondary cancel">Cancel</button>
+        </div>
+    </div> 
+</div>
+<!-- // -->
+<!-- signup modal -->
+<div id="id02" class="modal modal-content animate">
+    <div class="imgcontainer">
+        <span class="close" title="Close Modal">&times;</span>
+        <img src="avatar.png" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter Username" name="name" id="name" required>
+        
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="signupUsername" required>
+        
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="signupPassword" required>
+        
+        <label for="psw"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Enter Password" id="confirmPassword" required>        
+        
+        <button type="button" id="signupButton">Login</button>
+        <button type="button" class="btn-secondary cancel">Cancel</button>
+    </div>
+</div> 
+</div>
+<!-- // -->
+
 </body>
 </html>
