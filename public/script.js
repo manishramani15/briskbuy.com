@@ -2,7 +2,7 @@ $(() => {
     $(".cancel").click((ev) => {
         $(ev.target).closest('div.modal').hide()
     }) 
-    $('#loginButton').click(() => {
+    $('#loginButton').click((ev) => {
         const loginCredentials = {
             loginUsername: $('#loginUsername').val(),
             loginPassword: $('#loginPassword').val()
@@ -12,30 +12,27 @@ $(() => {
             loginCredentials,
             (data) => {
                 if(data.success) {
-                    $('#welcomeDiv').append(`<h4>Welcome ${data.name}!</h4><br><h6><i>your product is on the way.</i></h6>`)
-                    $('#loginButton').hide() //signup button also hide.
+                    $('#welcomeDiv').append(`<div style="color: floralwhite"><h4>Welcome ${data.name}!</h4><br><h6><i>your product is on the way.</i></h6></div>`)
+                    $('#loginFormButton').hide()
+                    $('#signupFormButton').hide() 
+                    $(ev.target).closest('div.modal').hide()
                 }
+                else{
+                    alert('username or password incorrect')
+                }
+                $('#loginUsername').val('')
+                $('#loginPassword').val('')
             }
             )
         })
-        $('#signupUsername').focusout(() => {
-            $.post(
-                '/signup',
-                {signupUsername: $('#signupUsername').val()},
-                (data) => {
-                    if(!data.success) {
-                        alert('Username already taken.')
-                    }
-                })
-        })
-        $('#signupButton').click(() => {
-            if($('#signupPassword') !== $('#confirmPassword')) {
+        $('#signupButton').click((ev) => {
+            if($('#signupPassword').val() !== $('#confirmPassword').val()) {
                 alert("Password didn't match")
             } else {
                 const signupCredentials = {
-                    signupUsername: $('#signupUsername').val(),
-                    signupPassword: $('#signupPassword').val(),
-                    signupName: $('#name').val()
+                    email: $('#signupUsername').val(),
+                    password: $('#signupPassword').val(),
+                    name: $('#name').val()
                 }
                 $.post(
                     '/signup',
@@ -43,11 +40,13 @@ $(() => {
                     (data) => {
                         if(data.success) {
                             alert('Welcome! Please login to continue.')
+                            $(ev.target).closest('div.modal').hide()
+                            
                         } else {
                             alert('An error occurred on server. Please retry')
                         }
                     }
-                )
-            }
+                    )
+                }
+            })
         })
-    })
