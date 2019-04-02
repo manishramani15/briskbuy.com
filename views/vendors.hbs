@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>briskbuy/vendors</title>
+    <link rel="icon" href="bb.png" type="image/gif" sizes="16x16"> 
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron header">
+            <div class="row">
+                <div class="col-sm-2 mainHeading"><h2>briskbuy.com</h2></div>
+                <div class="col-sm-7"></div>
+                <div class="col-sm-3 credentialContainer">
+                    <div id="welcomeDiv"></div>
+                    <button id='vendorLoginFormButton' onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Vendor Login</button>
+                    <button id='vendorSignupFormButton' onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Vendor Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div id="productForm">
+                <h3>Add product</h3>
+                <input type="text" name="name" id="productName" placeholder="product name"> <br><br>
+                <input type="number" name="quantity" id="productQuantity" placeholder="product quantity"> <br><br>
+                <input type="number" name="price" id="productPrice" placeholder="product price"> <br><br>
+                <button type="button" id="addProduct">➕</button>
+            
+            <div id="productList">
+                <table id="productList">
+                    
+                </table>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+    <div id="id01" class="modal modal-content animate">
+        <div class="imgcontainer">
+            <span class="close" title="Close Modal">&times;</span>
+            <img src="avatar.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" id="vendorLoginUsername" required>
+            
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" id="vendorLoginPassword" required>
+            
+            <button type="button" id="vendorLoginButton">Login</button>
+            <button type="button" class="btn-secondary cancel">Cancel</button>
+        </div>
+    </div> 
+</div>
+<!-- // -->
+<!-- signup modal -->
+<div id="id02" class="modal modal-content animate">
+    <div class="imgcontainer">
+        <span class="close" title="Close Modal">&times;</span>
+        <img src="avatar.png" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter Username" name="name" id="vendorName" required>
+        
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="vendorSignupUsername" required>
+        
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="vendorSignupPassword" required>
+        
+        <label for="psw"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Enter Password" id="vendorConfirmPassword" required>        
+        
+        <button type="button" id="vendorSignupButton">Signup</button>
+        <button type="button" class="btn-secondary cancel">Cancel</button>
+    </div>
+</div> 
+</div>
+<!-- // -->
+
+</body>
+</html>
