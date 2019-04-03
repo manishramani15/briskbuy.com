@@ -1,0 +1,42 @@
+const express = require('express')
+const sequelize = require('sequelize')
+const { CartItems, Products } = require('../db')
+
+const route = express.Router()
+
+route.get(
+    '/', 
+    async (req, res) => {
+        const cartItems = await CartItems.findAll({
+            where: { userId: 1 },
+            include: [Products]
+        })
+        res.send(cartItems)
+    })
+    
+    route.post(
+        '/',
+        (req, res) => {
+            return CartItems.count({ where: {productId: req.body.id}})
+            .then((count) => {
+                if(count > 0) {
+                    CartItems.update({ quantity: sequelize.literal('quantity + 1')}, { where: { productId: req.body.id } } )
+                } else {
+                    CartItems.create({
+                        productId: req.body.id,
+                        userId: 1 // session['id']
+                    })
+                }
+                return CartItems.findAll({
+                    where: { userId: 1 },
+                    include: [Products]
+                })
+                // res.redirect('/addtocart')
+            })
+            .then((cartItems) => {
+                res.send(cartItems)
+            })
+        })
+        
+        module.exports = route
+        

@@ -23,7 +23,9 @@ const routes = {
     login: require('./routes/login'),
     vendorlogin: require('./routes/vendorlogin'),
     vendorsignup: require('./routes/vendorsignup'),
-    addproduct: require('./routes/addproduct')
+    addproduct: require('./routes/addproduct'),
+    loadproducts: require('./routes/loadproducts'),
+    addtocart: require('./routes/addtocart')
 }
 
 app.use('/signup', routes.signup)
@@ -31,6 +33,8 @@ app.use('/login', routes.login)
 app.use('/vendorsignup', routes.vendorsignup)
 app.use('/vendorlogin', routes.vendorlogin)
 app.use('/addproduct', routes.addproduct)
+app.use('/loadproducts', routes.loadproducts)
+app.use('/addtocart', routes.addtocart)
 
 
 db.sync({ alter: true })

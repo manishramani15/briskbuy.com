@@ -104,7 +104,7 @@ span.psw {
   from {-webkit-transform: scale(0)} 
   to {-webkit-transform: scale(1)}
 }
-  
+
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
@@ -113,42 +113,68 @@ span.psw {
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
+    display: block;
+    float: none;
   }
   .cancelbtn {
-     width: 100%;
+    width: 100%;
   }
 }
 
 body, html, * {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 .container-fluid {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .header{
-    width: 100%;
-    background-color: #232f3e;
-    /* color: floralwhite */
+  width: 100%;
+  background-color: #232f3e;
+  /* position: fixed; */
+  /* color: floralwhite */
 }
 .mainHeading {
-    color: floralwhite;
+  color: floralwhite;
 }
 
 #searchInputGroup {
-    margin: 0;
+  margin: 0;
 }
 
 #productForm {
   display: none;
-
+  
 }
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
+}
+
+#productsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.productCard{
+  background-color: #f1f1f1;
+  width: 12%;
+  margin: 5%;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+.addToCart {
+  display: none;
+  border: 1px solid rgb(70, 70, 90);
+}
+
+#cart {
+  display: none;
+  border-left: 2px solid black;
 }
