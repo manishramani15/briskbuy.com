@@ -178,3 +178,16 @@ table, th, td {
   display: none;
   border-left: 2px solid black;
 }
+
+.cartCard {
+  border-top : 2px solid grey;
+  border-bottom : 2px solid grey;
+}
+
+#logout{
+  display: none;
+}
+
+#searchInput {
+  height: 100%;
+}

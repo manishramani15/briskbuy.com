@@ -1,5 +1,8 @@
 const express = require('express')
-const { db, Users} = require('./db')
+const { db } = require('./db')
+const session = require('express-session')
+
+const passport = require('./passport')
 
 app = express()
 
@@ -7,6 +10,16 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.set('view engine', 'hbs')
+
+app.use(session({
+    secret: 'h24b5jh245bk24',
+    resave: false,
+    saveUninitialized: true
+  }))
+
+  
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use('/', express.static(__dirname + '/public'))
 
@@ -25,7 +38,10 @@ const routes = {
     vendorsignup: require('./routes/vendorsignup'),
     addproduct: require('./routes/addproduct'),
     loadproducts: require('./routes/loadproducts'),
-    addtocart: require('./routes/addtocart')
+    addtocart: require('./routes/addtocart'),
+    loginsuccess: require('./routes/loginsuccess'),
+    loginfail: require('./routes/loginfail'),
+    credentialsbyid: require('./routes/credentialsbyid')
 }
 
 app.use('/signup', routes.signup)
@@ -35,6 +51,10 @@ app.use('/vendorlogin', routes.vendorlogin)
 app.use('/addproduct', routes.addproduct)
 app.use('/loadproducts', routes.loadproducts)
 app.use('/addtocart', routes.addtocart)
+app.use('/loginsuccess', routes.loginsuccess)
+app.use('/loginfail', routes.loginfail)
+app.use('/credentialsbyid', routes.credentialsbyid)
+
 
 
 db.sync({ alter: true })

@@ -18,17 +18,17 @@
             <div class="row">
                 <div class="col-sm-2 mainHeading"><h2>briskbuy.com</h2></div>
                 <div class="col-sm-7 searchContainer">
-                    <form>
+                    <form action='/search' method='GET'>
                         <div class="input-group row" id="searchInputGroup">
-                            <span class="input-group-addon col-sm-2 dropdown" id="filters">
+                            {{!-- <span class="input-group-addon col-sm-2 dropdown" id="filters">
                                 <select class="form-control" id="sel1" name="filters">
                                     <option value="all">All</option>
                                     <option value="male">male</option>
                                     <option value="female">female</option>
                                 </select>
-                            </span>
-                            <input type="text" id="searchInput" class="form-control col-sm-5" name="search" placeholder="search">
-                            <button id="search" class="col-sm-2">Search</button>
+                            </span> --}}
+                            <input type="text" id="searchInput" class="form-control col-sm-10" name="search" placeholder="search">
+                            {{!-- <button id="search" class="col-sm-2">Search</button> --}}
                         </div>
                     </form>
                 </div>
@@ -36,6 +36,7 @@
                     <div id="welcomeDiv"></div>
                     <button id='loginFormButton' onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
                     <button id='signupFormButton' onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+                    <button id='logout' class='btn btn-dark'>Logout</button>
                 </div>
             </div>
         </div>

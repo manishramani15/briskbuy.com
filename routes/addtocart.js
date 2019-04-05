@@ -8,7 +8,7 @@ route.get(
     '/', 
     async (req, res) => {
         const cartItems = await CartItems.findAll({
-            where: { userId: 1 },
+            where: { userId: req.query.userId },
             include: [Products]
         })
         res.send(cartItems)
@@ -17,23 +17,26 @@ route.get(
     route.post(
         '/',
         (req, res) => {
-            return CartItems.count({ where: {productId: req.body.id}})
+            return CartItems.count({ where: {productId: req.body.id, userId: req.body.userId}})
             .then((count) => {
                 if(count > 0) {
-                    CartItems.update({ quantity: sequelize.literal('quantity + 1')}, { where: { productId: req.body.id } } )
+                    return CartItems.update({ quantity: sequelize.literal('quantity + 1')}, { where: { productId: req.body.id, userId: req.body.userId } } )
                 } else {
-                    CartItems.create({
+                    return CartItems.create({
                         productId: req.body.id,
-                        userId: 1 // session['id']
+                        userId: req.body.userId
                     })
                 }
+            })
+            .then(() => {
                 return CartItems.findAll({
-                    where: { userId: 1 },
+                    where: { userId: req.body.userId },
                     include: [Products]
                 })
                 // res.redirect('/addtocart')
             })
             .then((cartItems) => {
+                console.log(cartItems)
                 res.send(cartItems)
             })
         })
