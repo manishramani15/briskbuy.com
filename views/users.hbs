@@ -18,17 +18,9 @@
             <div class="row">
                 <div class="col-sm-2 mainHeading"><h2>briskbuy.com</h2></div>
                 <div class="col-sm-7 searchContainer">
-                    <form action='/search' method='GET'>
+                    <form action='/' method='GET'>
                         <div class="input-group row" id="searchInputGroup">
-                            {{!-- <span class="input-group-addon col-sm-2 dropdown" id="filters">
-                                <select class="form-control" id="sel1" name="filters">
-                                    <option value="all">All</option>
-                                    <option value="male">male</option>
-                                    <option value="female">female</option>
-                                </select>
-                            </span> --}}
                             <input type="text" id="searchInput" class="form-control col-sm-10" name="search" placeholder="search">
-                            {{!-- <button id="search" class="col-sm-2">Search</button> --}}
                         </div>
                     </form>
                 </div>
@@ -42,6 +34,13 @@
         </div>
         <div class='row'>
             <div id='productsContainer' class='col-sm-12'>
+                {{!-- {{#each products as |product|}}
+                <div class='productCard' data-id={{product.id}}></div>
+                <h2>{{product.name}}</h2>
+                <h6>Price : {{product.price}}</h6>
+                <button class="btn btn-default addToCart">Add to Cart 🛒</button>
+                </div>
+                {{/each}} --}}
                 
             </div>
             <div id='cart' class='col-sm-2'>

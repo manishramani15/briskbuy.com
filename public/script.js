@@ -45,13 +45,7 @@ $(() => {
         $('#cart').append(`<button class='btn btn-default'>buy</button>`)
     }
     
-    // $.get(
-    //     '/search',
-    //     (data) => {
-
-    //     }
-    // )
-
+    
     $('#logout').click(() => {
         sessionStorage.removeItem('user-id')
         $('#searchInput').val('')
@@ -91,13 +85,12 @@ $(() => {
                 }
             }
             
-            $('#searchInput').on('input', (ev) => {
+            function searchHandler() {
                 let newProductsOnView = productsOnView.filter((product) => {
                     return product.name.includes($('#searchInput').val())
                 })
                 $('#productsContainer').empty()
                 loadProducts(newProductsOnView)
-                // window.location.hash = $('#searchInput').val()
                 if(sessionStorage['user-id']) {
                     $('.addToCart').show().click((ev) => {
                         console.log('clicked!')
@@ -113,6 +106,10 @@ $(() => {
                             })
                         })
                     }
+                }
+                
+                $('#searchInput').on('input', (ev) => {
+                    searchHandler()
                 }) 
                 
                 $.get(
@@ -121,6 +118,9 @@ $(() => {
                         productsOnView = products
                         await loadProducts(products)
                         checkSession();
+                        let searchValue = location.search.split('=')[1]
+                        $('#searchInput').val(searchValue)
+                        searchHandler()
                         
                         $('.addToCart').click((ev) => {
                             console.log('clicked!')
