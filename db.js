@@ -1,12 +1,25 @@
 const Sequelize = require('sequelize')
 
-const db = new Sequelize({
-    dialect: 'mysql',
-    database: `briskbuy.com`,
-    username: 'manish',
-    password: 'manish@briskbuy'
-})
+// const db = new Sequelize({
+//     dialect: 'mysql',
+//     database: `briskbuy.com`,
+//     username: 'manish',
+//     password: 'manish@briskbuy'
+// })
+//
 
+const username = "manish"
+const password = "manish@briskbuy"
+const host = "localhost"
+const port = "3306"
+const dbname = `briskbuy.com`
+
+const DB_URL = process.env.DATABASE_URL ||
+  `mysql://${username}:${password}@${host}:${port}/${dbname}`
+
+const db = new Sequelize(DB_URL)
+
+//
 const Users = db.define(
     'users', 
     {

@@ -4,6 +4,9 @@ const session = require('express-session')
 
 const passport = require('./passport')
 
+
+const PORT = process.env.PORT || 4444
+
 app = express()
 
 app.use(express.json())
@@ -66,8 +69,8 @@ app.use('/buy', routes.buy)
 
 db.sync({ alter: true })
 .then(() => {
-    app.listen(9876, () => {
-        console.log('Server started on http://localhost:9876')
-    })
+    app.listen(PORT, () => {
+        console.log(`Started on http://localhost:${PORT}`)
+  })
 })
 .catch(console.error)
