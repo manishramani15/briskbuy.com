@@ -20,23 +20,24 @@ route.get(
             }
         })
         if(flag) {
-            cartItems.forEach((cartItem) => {
-            Invoice.create({
-                quantity: cartItem.quantity,
-                productId: cartItem.productId,
-                userId: cartItem.userId,
-                vendorId: cartItem.product.vendorId
-            })
-            CartItems.destroy({
-                where: {
+            cartItems.forEach(async (cartItem) => {
+                await Products.update({ quantity: sequelize.literal(`quantity - ${cartItem.quantity}`)}, { where: { id: cartItem.productId } } )
+                await Invoice.create({
                     quantity: cartItem.quantity,
                     productId: cartItem.productId,
-                    userId: cartItem.userId
-                }
+                    userId: cartItem.userId,
+                    vendorId: cartItem.product.vendorId
+                })
+                await CartItems.destroy({
+                    where: {
+                        quantity: cartItem.quantity,
+                        productId: cartItem.productId,
+                        userId: cartItem.userId
+                    }
+                })
             })
-        })
-        res.send({success: true})
-    }
+            res.send({success: true})
+        }
     })
     
     module.exports = route
