@@ -42,9 +42,26 @@ $(() => {
             </div>
             `)
         })
-        $('#cart').append(`<button class='btn btn-default'>buy</button>`)
+        $('#cart').append(`<button id='buy' class='btn btn-default'>buy</button>`)
+        $('#buy').click(() => {
+            $.get(
+                `/buy/?userId=${sessionStorage['user-id']}`,
+                (data) => {
+                    if(data.success) {
+                        console.log(data.success)
+                        $('#cart').empty()
+                    } else {
+                        alert(`Product ${data.name} has quantity ${data.quantity} in stock, you can not buy more than ${data.quantity}.`)
+                    }
+                }
+            )
+
+        })
     }
     
+    $('#buy').click(() => {
+        console.log('buy clicked!')
+    })
     
     $('#logout').click(() => {
         sessionStorage.removeItem('user-id')
@@ -91,25 +108,26 @@ $(() => {
                 })
                 $('#productsContainer').empty()
                 loadProducts(newProductsOnView)
-                if(sessionStorage['user-id']) {
-                    $('.addToCart').show().click((ev) => {
-                        console.log('clicked!')
-                        $.post(
-                            '/addtocart',
-                            {
-                                id: $(ev.target).closest('.productCard').data('id'),
-                                userId: sessionStorage['user-id']
-                            },
-                            (cartItems) => {
-                                console.log(cartItems)
-                                loadCart(cartItems)
-                            })
-                        })
-                    }
+                
                 }
                 
                 $('#searchInput').on('input', (ev) => {
                     searchHandler()
+                    if(sessionStorage['user-id']) {
+                        $('.addToCart').show().click((ev) => {
+                            console.log('clicked!')
+                            $.post(
+                                '/addtocart',
+                                {
+                                    id: $(ev.target).closest('.productCard').data('id'),
+                                    userId: sessionStorage['user-id']
+                                },
+                                (cartItems) => {
+                                    console.log(cartItems)
+                                    loadCart(cartItems)
+                                })
+                            })
+                        }
                 }) 
                 
                 $.get(

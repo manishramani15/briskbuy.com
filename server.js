@@ -32,6 +32,8 @@ app.get('/vendors', (req, res) => {
     res.render('vendors')
 })
 
+
+
 const routes = {
     signup: require('./routes/signup'),
     login: require('./routes/login'),
@@ -43,6 +45,7 @@ const routes = {
     loginsuccess: require('./routes/loginsuccess'),
     loginfail: require('./routes/loginfail'),
     credentialsbyid: require('./routes/credentialsbyid'),
+    buy: require('./routes/buy')
     // search: require('./routes/search')
 }
 
@@ -56,6 +59,7 @@ app.use('/addtocart', routes.addtocart)
 app.use('/loginsuccess', routes.loginsuccess)
 app.use('/loginfail', routes.loginfail)
 app.use('/credentialsbyid', routes.credentialsbyid)
+app.use('/buy', routes.buy)
 // app.use('/search', routes.search)
 
 

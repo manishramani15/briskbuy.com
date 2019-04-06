@@ -36,7 +36,6 @@ route.get(
                 // res.redirect('/addtocart')
             })
             .then((cartItems) => {
-                console.log(cartItems)
                 res.send(cartItems)
             })
         })
