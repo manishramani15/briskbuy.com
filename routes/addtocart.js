@@ -16,28 +16,51 @@ route.get(
     
     route.post(
         '/',
-        (req, res) => {
-            return CartItems.count({ where: {productId: req.body.id, userId: req.body.userId}})
-            .then((count) => {
-                if(count > 0) {
-                    return CartItems.update({ quantity: sequelize.literal('quantity + 1')}, { where: { productId: req.body.id, userId: req.body.userId } } )
+        async (req, res) => {
+            return Products.findOne({ where: {id: req.body.id}})
+            .then(async (product) => {
+                let cartItem = await CartItems.sum('quantity', {where: {productId: req.body.id}})
+                console.log(cartItem)
+                if(cartItem) {
+                    if (product.quantity > cartItem) {
+                        return true
+                    }
+                    else {
+                        return false
+                    }
                 } else {
-                    return CartItems.create({
-                        productId: req.body.id,
-                        userId: req.body.userId
-                    })
+                    if(product.quantity > 0) {
+                        return true
+                    }
                 }
             })
-            .then(() => {
-                return CartItems.findAll({
-                    where: { userId: req.body.userId },
-                    include: [Products]
-                })
-                // res.redirect('/addtocart')
+            .then((success) => {
+                if(success === true) {
+                    return CartItems.count({ where: {productId: req.body.id, userId: req.body.userId}})
+                    .then((count) => {
+                        if(count > 0) {
+                            return CartItems.update({ quantity: sequelize.literal('quantity + 1')}, { where: { productId: req.body.id, userId: req.body.userId } } )
+                        } else {
+                            return CartItems.create({
+                                productId: req.body.id,
+                                userId: req.body.userId
+                            })
+                        }
+                    })
+                    .then(() => {
+                        return CartItems.findAll({
+                            where: { userId: req.body.userId },
+                            include: [Products]
+                        })
+                    })
+                    .then((cartItems) => {
+                        return res.send(cartItems)
+                    })
+                } else {
+                    res.send({exceed: true})
+                }
             })
-            .then((cartItems) => {
-                res.send(cartItems)
-            })
+            
         })
         
         module.exports = route

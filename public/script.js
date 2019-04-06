@@ -123,8 +123,12 @@ $(() => {
                                     userId: sessionStorage['user-id']
                                 },
                                 (cartItems) => {
-                                    console.log(cartItems)
-                                    loadCart(cartItems)
+                                    if(cartItems.exceed) {
+                                        alert('Cannot be added to cart. Limited stock!')
+                                    } else{
+                                        console.log(cartItems)
+                                        loadCart(cartItems)
+                                    }
                                 })
                             })
                         }
@@ -149,8 +153,12 @@ $(() => {
                                     userId: sessionStorage['user-id']
                                 },
                                 (cartItems) => {
-                                    console.log(cartItems)
-                                    loadCart(cartItems)
+                                    if(cartItems.exceed) {
+                                        alert('Cannot be added to cart. Limited stock!')
+                                    } else{
+                                        console.log(cartItems)
+                                        loadCart(cartItems)
+                                    }
                                 })
                             })
                         })
