@@ -48,7 +48,8 @@ const routes = {
     loginsuccess: require('./routes/loginsuccess'),
     loginfail: require('./routes/loginfail'),
     credentialsbyid: require('./routes/credentialsbyid'),
-    buy: require('./routes/buy')
+    buy: require('./routes/buy'),
+    removefromcart: require('./routes/removefromcart')
     // search: require('./routes/search')
 }
 
@@ -63,6 +64,7 @@ app.use('/loginsuccess', routes.loginsuccess)
 app.use('/loginfail', routes.loginfail)
 app.use('/credentialsbyid', routes.credentialsbyid)
 app.use('/buy', routes.buy)
+app.use('/removefromcart', routes.removefromcart)
 // app.use('/search', routes.search)
 
 

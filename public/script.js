@@ -49,6 +49,7 @@ $(() => {
             <p><b>${cartItem.product.name}</b></p>
             <p><b>Price :</b>${cartItem.product.price}</p>
             <p><b>Quantity :</b> ${cartItem.quantity}</p>
+            <button class="btn btn-default removeFromCart" data-cart-id="${cartItem.id}">Remove from Cart <strike>🛒</strike></button>
             </div>
             `)
         })
@@ -66,7 +67,16 @@ $(() => {
                     }
                 }
                 )
-                
+            })
+            $('.removeFromCart').click((event) => {
+                $.post(
+                    '/removefromcart',
+                    {id: $(event.target).data('cart-id')},
+                    (cartItems) => {
+                        $(event.target).closest('.cartCard').detach()
+                        loadCart(cartItems)
+                    }
+                )
             })
         }
         
