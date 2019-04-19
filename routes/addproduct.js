@@ -16,18 +16,18 @@ route.get(
             res.send({products})
         }) 
     }
-)
-
-route.post(
-    '/',
-    (req, res) => {
-        Products.create({
-            name: req.body.name,
-            price: req.body.price,
-            quantity: req.body.quantity,
-            vendorId: req.body.vendorId
-        })
-        res.redirect('/')
-    }
-)
-module.exports = route
+    )
+    
+    route.post(
+        '/',
+        (req, res) => {
+            Products.create({
+                name: req.body.name,
+                price: req.body.price,
+                quantity: req.body.quantity,
+                vendorId: req.body.vendorId
+            })
+            res.redirect('/')
+        }
+        )
+        module.exports = route

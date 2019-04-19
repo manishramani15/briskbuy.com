@@ -16,7 +16,9 @@ route.post(
                     Vendors.create({
                         name: req.body.name,
                         email: req.body.email,
-                        password: req.body.password
+                        password: req.body.password,
+                        lat: req.body.lat,
+                        lon: req.body.lon
                     })
                     res.send({success: true})
                 }

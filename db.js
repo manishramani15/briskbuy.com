@@ -35,6 +35,12 @@ const Users = db.define(
             type: Sequelize.STRING,
             allowNull: false
         },
+        lat: {
+            type: Sequelize.FLOAT
+        },
+        lon: {
+            type: Sequelize.FLOAT
+        }
     })
     
     const Vendors = db.define('vendor', {
@@ -48,6 +54,14 @@ const Users = db.define(
         },
         password: {
             type: Sequelize.STRING,
+            allowNull: false
+        },
+        lat: {
+            type: Sequelize.FLOAT,
+            allowNull: false
+        },
+        lon: {
+            type: Sequelize.FLOAT,
             allowNull: false
         },
     })
