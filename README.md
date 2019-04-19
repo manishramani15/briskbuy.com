@@ -1,6 +1,7 @@
 # briskbuy.com
 
-* Its a basic e-commerce web-app developed on node js.
+* It is a basic e-commerce web-app developed on node js.
+* Its principle is based on getting the product delivered fast by checking user's location and showing products nearby to him/her.
 * Searching of a product has been provided using regexp (regular expression)
 * The application has login/signup while maintaining sessions and is authenticated by passport local strategy.
 * It consists of 2 views.     
