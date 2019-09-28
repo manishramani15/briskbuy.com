@@ -3,10 +3,10 @@ const Sequelize = require('sequelize')
 // const db = new Sequelize({
 //     dialect: 'mysql',
 //     database: `briskbuy.com`,
-//     username: 'manish',
+//     username: 'manish', //manish@localhost
 //     password: 'manish@briskbuy'
 // })
-//
+
 
 const username = "manish"
 const password = "manish@briskbuy"
@@ -16,10 +16,10 @@ const dbname = `briskbuy.com`
 
 const DB_URL = process.env.DATABASE_URL ||
   `mysql://${username}:${password}@${host}:${port}/${dbname}`
-
-const db = new Sequelize(DB_URL)
-
+//postgres://wskoiibcvvrotm:f6bf35f06bf740bb499188afad61f5865caa0d2bf121966b9e6df88628a1e0c6@ec2-174-129-229-106.compute-1.amazonaws.com:5432/d1ps8ds6tnjhvh
+// const db = new Sequelize(DB_URL)
 //
+
 const Users = db.define(
     'users', 
     {

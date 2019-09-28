@@ -1,7 +1,7 @@
 {
   "name": "briskbuy.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "* It is a basic e-commerce web-app developed on node js. * Its principle is based on getting the product delivered fast by checking user's location and showing products nearby to him/her. * Searching of a product has been provided using regexp (regular expression) * The application has login/signup while maintaining sessions and is authenticated by passport local strategy. * It consists of 2 views.        1. one for the vendor at ‘/vendors’ for adding products. link https://briskbuy.herokuapp.com/vendors   2. Second for the users to view and buy products. link: https://briskbuy.herokuapp.com * It is equipped with stock maintenance while maintaining transactions. * The application is a fast web app as it uses ajax for request exchange and hence no unnecessary reloads. * Frameworks used:    1. express - for running servers   2. sequelize - for object relational mapping   3. hbs - view engine   4. mysql2 / pg  - for mysql and postgresql database respectively (used mysql while development while pg for deployment) * It involves following libraries:   1. bootstrap - CSS library   2. jQuery - javascript library * It is deployed over https://briskbuy.herokuapp.com",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,14 +18,14 @@
   },
   "homepage": "https://github.com/manishramani15/briskbuy.com#readme",
   "dependencies": {
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "hbs": "^4.0.3",
-    "mysql2": "^1.6.5",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "hbs": "^4.0.5",
+    "mysql2": "^1.7.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^5.2.1"
+    "sequelize": "^5.19.1"
   }
 }
